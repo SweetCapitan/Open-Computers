@@ -11,7 +11,7 @@ local event = require("event")
 local prorepties = {
 	progressBarLength = 15,
 	progressBarFull = "=",
-	projectsListUrl = "https://raw.githubusercontent.com/HeroBrine1st/UniversalInstaller/master/projects.list",
+	projectsListUrl = "https://raw.githubusercontent.com/SweetCapitan/Open-Computers/master/projects.list",
 }
 local language
 local languagePackages = {
