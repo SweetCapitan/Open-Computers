@@ -1,3 +1,4 @@
+--Кое-какая часть Быдлокода была нагло спизжена у N1nt3nd0 и надеюсь бить меня за это не будут :3
 local com = require('component')
 local ev = require('event')
 local term = require('term')
