@@ -1,0 +1,2 @@
+{{name='Joker',url='https://raw.githubusercontent.com/SweetCapitan/Open-Computers/master/joker.lua'}
+{name='Radar',url='https://raw.githubusercontent.com/SweetCapitan/Open-Computers/master/radar_GUI.lua'}}
