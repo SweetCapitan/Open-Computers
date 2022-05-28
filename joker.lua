@@ -19,7 +19,7 @@ joke_bd = {
   'кто бы мог подумать', 'ты не поверишь, но', 'ХХЫЫЫЫ...', 'то чувство, когда', 'неделю не просыхал'
 }
 
-joke = {}
+local joke = {}
 
 for i=1, math.random(1,6) do
 	frase = joke_bd[math.random(1,#joke_bd)]
