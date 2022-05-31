@@ -509,6 +509,6 @@ local anekdots = [
     ]
 
 while true do
-    chat.say(math.random(1, #anekdots))
-    os.sleep()
+    chat.say(anekdots[math.random(1, #anekdots)])
+    os.sleep(300)
 end
