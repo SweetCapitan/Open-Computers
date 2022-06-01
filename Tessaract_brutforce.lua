@@ -23,7 +23,7 @@ while true do
 
         tessaract.setFrequency(i)
 
-        if not dev then
+        if dev then
             print("Установлена частота: "..i)
         end
 
@@ -33,12 +33,12 @@ while true do
 
         local energy_after = capasitor.getEnergyStored()
 
-        if not dev then
+        if dev then
             print(tostring(energy_before) .. " энергии было и " .. tostring(energy_after) .." стало")
         end
 
         if energy_after > energy_before then
-            if not dev then
+            if dev then
                 print("Обнаружено поступление энергии!")
             end
             os.sleep(10)
@@ -51,7 +51,7 @@ while true do
             i = 1
         end
 
-        if not dev then
+        if dev then
             term.clear()
         end
         
