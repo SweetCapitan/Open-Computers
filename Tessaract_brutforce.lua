@@ -2,7 +2,7 @@
 -- Реализованно игроком Dancho
 -- DREAMFINITY 2022
 
-ocal component = require('component')
+local component = require('component')
 local term = require('term')
 local tessaract = component.tile_thermalexpansion_ender_tesseract_name
 local capasitor = component.capacitor_bank
