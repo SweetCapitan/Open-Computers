@@ -8,6 +8,10 @@ local tessaract = component.tile_thermalexpansion_ender_tesseract_name
 local capasitor = component.capacitor_bank
 
 local i = 1
+local dev = false -- для отладки включить true в остальное время false, чтобы не получить по жопе
+
+term.clear()
+term.write("ЮморФМ вещает!")
 
 while true do
     
@@ -19,7 +23,9 @@ while true do
 
         tessaract.setFrequency(i)
 
-        print("Установлена частота: "..i)
+        if not dev then
+            print("Установлена частота: "..i)
+        end
 
         local energy_before = capasitor.getEnergyStored()
 
@@ -27,10 +33,14 @@ while true do
 
         local energy_after = capasitor.getEnergyStored()
 
-        print(tostring(energy_before) .. " энергии было и " .. tostring(energy_after) .." стало")
+        if not dev then
+            print(tostring(energy_before) .. " энергии было и " .. tostring(energy_after) .." стало")
+        end
 
         if energy_after > energy_before then
-            print("Обнаружено поступление энергии!")
+            if not dev then
+                print("Обнаружено поступление энергии!")
+            end
             os.sleep(10)
             i = i - 1
         end
@@ -41,7 +51,9 @@ while true do
             i = 1
         end
 
-        term.clear()
-
+        if not dev then
+            term.clear()
+        end
+        
     end
 end
