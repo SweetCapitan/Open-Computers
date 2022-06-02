@@ -12,9 +12,7 @@ local red = component.redstone
 local input = {}
 local password = "0451"
 local curAdr
-
 local userList = {}
-
 local userListFile = "trustedUsers.cfg"
 
 local function fileExist(file)
@@ -25,8 +23,10 @@ end
 
 local function readConfig(file)
     if not fileExist(file) then 
-        io.open(file, "w")
-        return {}
+        f = io.open(file, "w")
+        f:write("----TRUSTED USERS----")
+        f:close()
+        return
     else
         for line in io.lines(file) do
             table.insert(userList, line)
@@ -99,10 +99,6 @@ function clickHandler:clear(_curAdr)
 end
 
 local _clickHandler = clickHandler:new()
-
-
-
-
 
 local function clicker(_, curAdr, x, y, _, user)
     if y >= 2 and y <= 4 then input[curAdr] = input[curAdr] .. math.floor((y - 2) * 3 + (x / 2)) _clickHandler:buttonPressed(curAdr) end
