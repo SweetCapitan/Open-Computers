@@ -105,7 +105,7 @@ local function clicker(_, curAdr, x, y, _, user)
     if y == 5 and x == 4 then input[curAdr] = input[curAdr] .. "0" _clickHandler:buttonPressed(curAdr) end
     if y == 5 and x == 2 then _clickHandler:clear(curAdr) end
     if y == 5 and x == 6 then if #input[curAdr] == 0 and checkUser(user) or password == input[curAdr] then _clickHandler:succes(curAdr, user) else _clickHandler:clear(curAdr) end end
-    
+    if #input[curAdr] == 7 then _clickHandler:clear(curAdr) end
     --Для отладки
     ---------------------------
     -- term.setCursor(1,8)
