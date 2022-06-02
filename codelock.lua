@@ -5,17 +5,43 @@ local term = require("term")
 local component = require("component")
 local computer = require("computer")
 local event = require("event")
+local io = require("io")
 local gpu = component.gpu
 local red = component.redstone
 
 local input = {}
-local userList = {"marko_ru"}
 local password = "0451"
 local curAdr
 
-local clickHandler = {}  
+local userList = {}
+
+local userListFile = "trustedUsers.cfg"
+
+local function fileExist(file)
+    local f = io.open(file, "r")
+    if f then f:close() end
+    return f ~= nil
+end
+
+local function readConfig(file)
+    if not fileExist(file) then 
+        io.open(file, "w")
+        return {}
+    else
+        for line in io.lines(file) do
+            table.insert(userList, line)
+        end
+    end
+end
+
+local function writeConfig(file, data)
+    config = io.open(file, "a")
+    config:write("\n" .. data)
+    config:close()
+end
 
 local function checkUser(_user)
+    readConfig(userListFile)
     -- term.setCursor(10, 1)
     for i, k in ipairs(userList) do
         -- print("Проверка ".. k .. " : " .. _user)
@@ -40,6 +66,8 @@ local function drawScreen(_curAdr)
     print(var)
 end
 
+local clickHandler = {}  
+
 function clickHandler:new()
     newObj = {}
     self.__index = self
@@ -55,7 +83,8 @@ function clickHandler:succes(_curAdr,_user)
     computer.beep(1000)
     red.setOutput(3, 0)
     if not checkUser(_user) then
-        table.insert(userList, _user)
+        writeConfig(userListFile, _user)
+        userList = {}
     end
     input[_curAdr] = ""
     drawScreen(_curAdr)
@@ -91,7 +120,7 @@ local function clicker(_, curAdr, x, y, _, user)
     ---------------------------
 end
 
-local function initDisplays()
+local function init()
     for k in component.list("screen") do -- Сохранение адресов мониторов
         input[k] = ""
         gpu.bind(k)
@@ -117,5 +146,5 @@ local function run()
 	end
 end
 
-initDisplays()
+init()
 run()
