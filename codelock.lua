@@ -35,7 +35,9 @@ local function drawScreen(_curAdr)
     gpu.setBackground(0x444444)
     gpu.fill(1, 1, 7, 1, ' ')
     term.setCursor(1, 1)
-    print(input[_curAdr])
+    -- print(input[_curAdr])
+    local var = tostring(input[_curAdr]):gsub("%d", "*")
+    print(var)
 end
 
 function clickHandler:new()
