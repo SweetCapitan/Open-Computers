@@ -1,5 +1,5 @@
 --Кое-какая часть Быдлокода была нагло спизжена у N1nt3nd0 и надеюсь бить меня за это не будут :3
-local component = require('componentponent')
+local component = require('component')
 local event = require('event')
 local term = require('term')
 local table = require('table')
